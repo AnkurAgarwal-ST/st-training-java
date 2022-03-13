@@ -26,4 +26,44 @@ public class CandidateServiceImpl implements CandidateService {
 
     return candidates;
   }
+  public List<Candidate> getCandidateByID(Integer id) {
+	  
+	  List<Candidate> l = new ArrayList<Candidate>();
+	  for(Candidate c: candidates) {
+		  if(c.getCandidateId().equals(id)) {
+			  l.add(c);
+			  break;
+		  }
+	  }
+	return l;	  	  
+  }
+@Override
+public String add(Candidate c) {
+	candidates.add(c);
+	return "Insertion Successful";	
+}
+@Override
+public String update(Candidate cand) {
+	candidates.stream().filter(c -> c.getCandidateId() == cand.getCandidateId()).forEach(c -> {
+		c.setEmail(cand.getEmail());
+		c.setFirstName(cand.getFirstName());
+		c.setLastName(cand.getLastName());
+		c.setPhone(cand.getPhone());
+		
+	});
+	return "Updation Successful";
+}
+@Override
+public String delete(Integer id) {
+	int index=0;
+	for(int i=0;i<candidates.size();i++) {
+		Candidate c = candidates.get(i);
+		if(c.getCandidateId()==id) {
+			index=i;
+			break;
+		}
+	}
+	candidates.remove(index);
+	return "Deletion Successful";
+}
 }
