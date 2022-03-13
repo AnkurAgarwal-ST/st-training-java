@@ -11,7 +11,7 @@ public class CandidateServiceImpl implements CandidateService {
 
   private static List<Candidate> candidates = new ArrayList<>();
 
-  static{
+  static {
     candidates.add(new Candidate(100, "ankur.agarwal@example.com", "Ankur", "Agarwal", "987654320"));
     candidates.add(new Candidate(101, "alok.sharma@example.com", "Alok", "Sharma", "987654321"));
     candidates.add(new Candidate(102, "farhan.qureshi@example.com", "Farhan", "Qureshi", "987654322"));
@@ -26,4 +26,31 @@ public class CandidateServiceImpl implements CandidateService {
 
     return candidates;
   }
+
+  @Override
+  public Candidate get(Integer id) {
+    id = id % 100;
+    return candidates.get(id);
+  }
+
+  @Override
+  public List<Candidate> add(Candidate cand) {
+    candidates.add(cand);
+    return candidates;
+  }
+
+  @Override
+  public List<Candidate> update(Candidate cand) {
+    int id = cand.getCandidateId();
+    id = id % 100;
+    candidates.set(id, cand);
+    return candidates;
+  }
+
+  @Override
+  public List<Candidate> delete(Candidate cand) {
+    candidates.remove(cand.getCandidateId() % 100);
+    return candidates;
+  }
+
 }
