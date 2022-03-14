@@ -26,4 +26,50 @@ public class CandidateServiceImpl implements CandidateService {
 
     return candidates;
   }
+  @Override
+  public Candidate get(Integer id) {
+	  int index=-1;
+	  for(int i=0;i<candidates.size();i++) {
+		  Candidate temp = candidates.get(i);
+		  if(temp.getCandidateId()==id)
+		  {
+			  index = candidates.indexOf(temp);
+			  
+		  }
+	  }
+	  return candidates.get(index);
+  }
+  @Override
+  public List<Candidate> delete(Integer id) {
+	  int index=-1;
+	  for(int i=0;i<candidates.size();i++) {
+		  Candidate temp = candidates.get(i);
+		  if(temp.getCandidateId()==id)
+		  {
+			  index = candidates.indexOf(temp);
+			  
+		  }
+	  }
+	  candidates.remove(index);
+	  return candidates;
+  }
+  @Override
+  public List<Candidate> add(Candidate newCandidate){
+	  candidates.add(newCandidate);
+	  return candidates;
+  }
+  @Override
+  public List<Candidate> update(Integer id,Candidate newCandidate){
+	  int index=-1;
+	  for(int i=0;i<candidates.size();i++) {
+		  Candidate temp = candidates.get(i);
+		  if(temp.getCandidateId()==id)
+		  {
+			  index = candidates.indexOf(temp);
+			  
+		  }
+	  }
+	  candidates.set(index, newCandidate);
+	  return candidates;
+  }
 }
