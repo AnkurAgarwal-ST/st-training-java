@@ -22,4 +22,24 @@ public class CandidateController {
     List<Candidate> candidates = candidateService.getAll();
     return candidates;
   }
+  @RequestMapping(value="/getById/{candidateId}")
+	  public Candidate getById(@PathVariable("candidateId") Integer candidateId) {
+		  return candidateService.getById(candidateId);
+	  
+  }
+  
+  @RequestMapping(method=RequestMethod.POST,value="/add")
+  public void add(@RequestBody Candidate candidate) {
+	  candidateService.add(candidate);
+  }
+  
+  @RequestMapping(method=RequestMethod.PUT,value="/updateCandidate/{candidateId}")
+  public void updateCandidate(@RequestBody Candidate candidate, @PathVariable("candidateId") Integer candidateId) {
+	  candidateService.updateCandidate(candidate,candidateId);
+  }
+  
+  @RequestMapping(method=RequestMethod.DELETE,value="/deleteCandidate/{candidateId}")
+  public void deleteCandidate(@PathVariable("candidateId") Integer candidateId) {
+	  candidateService.deleteCandidate(candidateId);
+  }
 }
