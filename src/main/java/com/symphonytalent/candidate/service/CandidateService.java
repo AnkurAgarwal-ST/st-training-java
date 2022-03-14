@@ -6,4 +6,8 @@ import com.symphonytalent.candidate.bean.Candidate;
 public interface CandidateService {
 
   List<Candidate> getAll();
+  Candidate getCandidate(Integer id);
+  void add(Candidate c);
+  void update(Candidate c);
+  void delCandidate(Integer id);
 }
