@@ -26,4 +26,74 @@ public class CandidateServiceImpl implements CandidateService {
 
     return candidates;
   }
+
+@Override
+public Candidate getById(Integer candidateId) {
+	
+	Candidate candidate = new Candidate();
+	for(int i = 0 ; i < candidates.size();i++) {
+		
+		int a = candidates.get(i).getCandidateId();
+		if(candidateId == a) {
+			candidate = candidates.get(i);
+			break;
+		}
+		
+	}
+	return candidate;
+	
+	}
+
+@Override
+public void add(Integer candidateId, String email, String fname, String lname, String phone) {
+		
+	candidates.add(new Candidate(candidateId,email,fname,lname,phone));
+	
+}
+
+/*
+ * @Override public void update(Integer candidateId, String email, String fname,
+ * String lname, String phone) {
+ * 
+ * for(int i=0 ; i < candidates.size(); i++) {
+ * 
+ * int a = candidates.get(i).getCandidateId(); if(candidateId == a) {
+ * candidates.remove(i); candidates.add(new
+ * Candidate(candidateId,email,fname,lname,phone)); break; } }
+ * 
+ * }
+ */
+
+@Override
+public void update(Integer candidateId, String email, String fname, String lname, String phone) {
+	
+	for(int i=0 ; i < candidates.size(); i++) {
+		
+		int a = candidates.get(i).getCandidateId();
+		if(candidateId == a) {
+			candidates.get(i).setEmail(email);
+			candidates.get(i).setFirstName(fname);
+			candidates.get(i).setLastName(lname);
+			candidates.get(i).setPhone(phone);
+			break;
+		}
+	}
+	
+}
+
+
+@Override
+public void deleteById(Integer candidateId) {
+	
+for(int i=0 ; i < candidates.size(); i++) {
+		
+		int a = candidates.get(i).getCandidateId();
+		if(candidateId == a) {
+			candidates.remove(i);
+			break;
+		}
+	
+}
+
+}	
 }
