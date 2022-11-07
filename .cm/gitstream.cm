@@ -67,9 +67,9 @@ automations:
         args:
           labels: ['long-review']
   review_java:
-      if:
-        - {{ files | extensions | match(list=['java']| some}}
-      run:
-        - action: add-reviewers@v1
-          args:
-            reviewers: [amitgupta-st]
+     if:
+      - {{ files | extensions | match(list=['java'] | some}}
+     run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: [amitgupta-st]
