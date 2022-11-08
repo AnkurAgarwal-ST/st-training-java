@@ -72,4 +72,4 @@ automations:
      run:
       - action: add-reviewers@v1
         args:
-          reviewers: [amitgupta-st]
+          reviewers: [rishadsoofiST]
