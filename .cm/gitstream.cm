@@ -70,6 +70,6 @@ automations:
      if:
       - {{ files | extensions | match(list=['java', 'jav']) | some }}
      run:
-      - action: add-reviewers@v1
+      - action: require-reviewers@v1
         args:
           reviewers: [rishadsoofiST]
