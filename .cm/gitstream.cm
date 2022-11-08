@@ -45,7 +45,7 @@ automations:
           labels: ['docs']
   mark_tests:
     if:
-      # Check for every changed file if is a test file. The allTests filter checks for 
+      #  Check for every changed file if is a test file. The allTests filter checks for
       # the substring `test` or `spec` in the file path or file name.
       # Read more on [isformattingchange](https://linear-b.github.io/gitstream-mkdocs/23_gitstream-filters/#alltests-filter)
       - {{ files | allTests }}
