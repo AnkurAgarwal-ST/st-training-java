@@ -68,7 +68,7 @@ automations:
           labels: ['long-review']
   review_java:
      if:
-      - {{ files | extensions | match(list=['java', 'jav'] | some }}
+      - {{ files | extensions | match(list=['java', 'jav']) | some }}
      run:
       - action: add-reviewers@v1
         args:
