@@ -55,7 +55,7 @@ automations:
           labels: ['tests']
   mark_complex_pr:
     if:
-      # It's possible to check if either a one of few conditions pass (OR relation) by using
+      #  It's possible to check if either a one of few conditions pass (OR relation) by using
       # the `or` expression. Here the PR complexity is checked, one condition for complex PRs  
       # is the number of files, checked using the [`length` filter function](https://mozilla.github.io/nunjucks/templating.html#length)
       # OR
