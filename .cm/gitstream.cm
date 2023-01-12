@@ -59,6 +59,7 @@ is:
   tests: {{ files | allTests }}
 
 has:
-  jira_ticket_id: {{ pr.title | includes(regex=r/^\[?\w{3,4}-\d{1,6}\]?(\s|-|_).{25,}$/) }}
+  jira_ticket_id: {{ pr.title | includes(regex=r/^(Revert ")?\[?\w{3,4}-\d{1,6}\]?(\s|-|_).{25,}$/) }}
+
 
 
