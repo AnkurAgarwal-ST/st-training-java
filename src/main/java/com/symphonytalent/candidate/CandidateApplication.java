@@ -11,6 +11,5 @@ SpringApplication.run(CandidateApplication.class, args);
 System.out.println("Open Application ->  http://localhost:8080");
 System.out.println("Open Application at ->  http://localhost:8082");
 
-
 }
 }
