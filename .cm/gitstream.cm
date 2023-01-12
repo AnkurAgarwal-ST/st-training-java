@@ -49,8 +49,7 @@ automations:
       - action: request-changes@v1
         args:
           comment: |
-            "{{ pr.title }} 
-            \n Above is an Invalid PR title. PR title must start with a valid Jira ticket id. The Jira id can be enclosed in a square bracket, like [SFX-1234], but not mandatory, e.g SFX-1234. Jira id must be followed by a minimum 25 characters description. You need to do another commit in the pr to reevaluate this rule after fixing pr title."
+            "'{{ pr.title }}'  ->  This is an Invalid PR title. PR title must start with a valid Jira ticket id. The Jira id can be enclosed in a square bracket, like [SFX-1234], but not mandatory, e.g SFX-1234. Jira id must be followed by a minimum 25 characters description. You need to do another commit in the pr to reevaluate this rule after fixing pr title."
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
