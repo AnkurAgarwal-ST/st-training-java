@@ -22,5 +22,6 @@ public class CandidateController {
     List<Candidate> candidates =candidateService.getAll();
     return candidates;
     
+    
   }
 }
