@@ -19,7 +19,10 @@ public class CandidateController {
   @GetMapping(value = "/getAll")
   public List<Candidate> getAllCandidates() {
 
-    List<Candidate> candidates = candidateService.getAll();
+    List<Candidate> candidates =candidateService.getAll();
     return candidates;
+    
+    
+    
   }
 }
