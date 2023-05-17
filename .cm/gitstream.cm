@@ -12,3 +12,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: "Hello from action"
+          
+      - action: add-comment@v1
+        args:
+          comment: {{ pr.reviews }}
