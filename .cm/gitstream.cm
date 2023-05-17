@@ -3,63 +3,12 @@
 manifest:
   version: 1.0
 
-# The `automations` section includes a list of automation that applies
-# to the repository in which gitStream is installed. Each automation has an
-# `if` key with a list of the necessary assertions, as well as a `run` key with a
-# list of all actions. All the listed assertions need to pass in order
-# for the following actions to be executed (there is AND relation between conditions).
-
-# Each automation under the `automations` section is independent of the others.
-# Every time a PR is opened or changed, the automation's conditions are evaluated (the `if`).
-# The actions under `run` are executed one by one if all the conditions pass.
-
-# Conditions consists of an expression, which are wrapped with double curly braces, and
-# includes a context variable like `files` and filter functions like `length`. Filters
-# functions are essentially functions that can be applied to context variables. They are
-# called with a pipe operator (|) and can take arguments. Read more on https://docs.gitstream.cm
-
 automations:
-  # This is the name of the review automation. You can use whatever name, a meaningful name
-  # will help to identify it in the future. Each automation name in this file should be unique.
 
-  estimated_time_to_review:
+  identify_first_unsubmitted_comment:
     if:
-      - true
+       - true
     run:
-      - action : add-label@v1
+      - action: add-comment@v1
         args:
-          label: "{{ calc.etr }} min review"
-          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
-
-  add_team_as_reviewer:
-    if:
-      - true
-    run:
-      - action : add-labels@v1
-        args:
-          labels: {{ pr.author_teams }}
-      - action: add-reviewers@v1
-        args:
-          team_reviewers: {{ pr.author_teams }}
-
-  PR_title_must_contain_jira_id:
-    if:
-      - {{ not has.jira_ticket_id }}
-    run:
-      - action: request-changes@v1
-        args:
-          comment: |
-            "Invalid PR title. PR title must start with a valid Jira ticket id. The Jira id can be enclosed in a square bracket, like [SFX-1234], but not mandatory, e.g SFX-1234. Jira id must be followed by a minimum 25 characters description. You need to do another commit in the pr to reevaluate this rule after fixing pr title."
-
-calc:
-  etr: {{ branch | estimatedReviewTime }}
-is:
-  formatting: {{ source.diff.files | isFormattingChange }}
-  docs: {{ files | allDocs }}
-  tests: {{ files | allTests }}
-
-has:
-  jira_ticket_id: {{ pr.title | includes(regex=r/^(Revert ")?\[?\w{3,4}-\d{1,6}\]?(\s|-|_).{25,}$/) }}
-
-
-
+          comment: "Hello from action"
